@@ -1,0 +1,39 @@
+[project]
+name = "crtsh-mcp"
+version = "0.1.0"
+description = "MCP server over the crt.sh certificate-transparency log search (keyless, read-only)"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+authors = [{ name = "mrfentmen" }]
+keywords = ["mcp", "crt.sh", "certificate-transparency", "tls", "subdomains", "security", "llm"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security",
+]
+dependencies = [
+    "mcp>=1.3.0,<2",
+    "httpx>=0.27.0",
+    "starlette>=0.36",
+    "uvicorn>=0.27",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "pytest-asyncio>=0.23"]
+
+[project.urls]
+Homepage = "https://github.com/mrfentmen/crtsh-mcp"
+Issues = "https://github.com/mrfentmen/crtsh-mcp/issues"
+
+[project.scripts]
+crtsh-mcp = "server:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["."]
